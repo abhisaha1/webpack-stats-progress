@@ -1,6 +1,6 @@
 {
   "name": "webpack-stats-progress",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A webpack plugin to get progess of build and provide better stats of output files",
   "main": "./lib/index.js",
   "scripts": {
