@@ -2833,7 +2833,7 @@ lodash-es@^4.17.15:
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
   integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
 
-lodash@^4.17.13, lodash@^4.17.15:
+lodash@^4.17.13:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -4506,6 +4506,16 @@ webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1:
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
+
+webpack-stats-progress@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/webpack-stats-progress/-/webpack-stats-progress-0.0.2.tgz#4c88cf245e9f4c41c46b06b38b8f97d75a8b5a43"
+  integrity sha512-KmAOrmtd3ctgya4sZLRyUjjAugrS5sq5N3xUUx5lbyltWv2UN2X4wNtXOJyUAOJrRfoT4I2496WiWB7L7WZjKw==
+  dependencies:
+    filesize "^6.1.0"
+    gzip-size "^5.1.1"
+    progress "^2.0.3"
+    recursive-readdir "^2.2.2"
 
 webpack@^4.43.0:
   version "4.43.0"

@@ -43,7 +43,8 @@
     "ts-loader": "^7.0.4",
     "typescript": "^3.9.3",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-stats-progress": "^0.0.2"
   },
   "peerDependencies": {
     "webpack": "*"

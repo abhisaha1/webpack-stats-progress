@@ -43,9 +43,7 @@ export function printFileSizesAfterBuild(
         .map((asset) => {
           let root = buildFolder;
 
-          const fileContents = fs.readFileSync(
-            path.join(__dirname, root, asset.name),
-          );
+          const fileContents = fs.readFileSync(path.join(root, asset.name));
           const size = gzipSize(fileContents);
           const previousSize = sizes[removeFileNameHash(root, asset.name)];
           const difference = getDifferenceLabel(size, previousSize);

@@ -5,6 +5,7 @@ This plugin is intended to provide cleaner output of webpack build. It also disp
 ### Progress bar
 
 The plugin also comes with a progress bar
+<img src="./screenshot2.png">
 
 ### Usage
 
@@ -16,7 +17,9 @@ const WebpackStatsProgress = require("webpack-stats-progress");
 module.exports = {
   mode: "production",
   stats: "none",
-  plugins: [new WebpackStatsProgress({ buildFolder: "dist" })],
+  plugins: [
+    new WebpackStatsProgress({ buildFolder: path.join(__dirname, "dist") }),
+  ],
 };
 ```
 

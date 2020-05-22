@@ -2,3 +2,4 @@ dist
 src
 example
 yarn.lock
+*.png
