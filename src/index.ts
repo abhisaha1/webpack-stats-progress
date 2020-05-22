@@ -5,6 +5,7 @@ import {
 import { Compiler, Stats } from "webpack";
 import { ISizeMap } from "./types";
 import { progressBarPlugin } from "./progress";
+import { printBuildError } from "./error";
 const chalk = require("chalk");
 
 interface IOptions {
@@ -13,10 +14,16 @@ interface IOptions {
   maxChunkGzipSize?: number;
 }
 
-class FormatStats {
+class BetterWebpackStats {
+  /**
+   * Destination build folder
+   *
+   * @type {IOptions["buildFolder"]}
+   * @memberof BetterWebpackStats
+   */
+  buildFolder: IOptions["buildFolder"];
   maxBundleGzipSize: IOptions["maxBundleGzipSize"];
   maxChunkGzipSize: IOptions["maxChunkGzipSize"];
-  buildFolder: IOptions["buildFolder"];
   previousSizeMap: ISizeMap;
 
   constructor(options: IOptions) {
@@ -39,7 +46,7 @@ class FormatStats {
       if (error) {
         printBuildError(error.error);
       }
-
+      // Measure bundle size only for production build
       if (compiler.options.mode !== "production") return;
       console.log(chalk.magenta("The sizes displayed below are gzipped"));
       return printFileSizesAfterBuild(
@@ -52,6 +59,7 @@ class FormatStats {
     });
 
     compiler.hooks.beforeCompile.tapAsync("beforeRun", (params, callback) => {
+      // Measure bundle size only for production build
       if (compiler.options.mode !== "production") return callback();
       measureFileSizesBeforeBuild(this.buildFolder).then((sizeMap) => {
         this.previousSizeMap = sizeMap;
@@ -61,38 +69,4 @@ class FormatStats {
   }
 }
 
-module.exports = FormatStats;
-
-function printBuildError(err: Error) {
-  const message = err != null && err.message;
-  const stack = err != null && err.stack;
-
-  // Add more helpful message for Terser error
-  if (
-    stack &&
-    typeof message === "string" &&
-    message.indexOf("from Terser") !== -1
-  ) {
-    try {
-      const matched = /(.+)\[(.+):(.+),(.+)\]\[.+\]/.exec(stack);
-      if (!matched) {
-        throw new Error("Using errors for control flow is bad.");
-      }
-      const problemPath = matched[2];
-      const line = matched[3];
-      const column = matched[4];
-      console.log(
-        "Failed to minify the code from this file: \n\n",
-        chalk.yellow(
-          `\t${problemPath}:${line}${column !== "0" ? ":" + column : ""}`,
-        ),
-        "\n",
-      );
-    } catch (ignored) {
-      console.log("Failed to minify the bundle.", err);
-    }
-    console.log("Read more here: https://cra.link/failed-to-minify");
-  } else {
-    console.log((message || err) + "\n");
-  }
-}
+module.exports = BetterWebpackStats;

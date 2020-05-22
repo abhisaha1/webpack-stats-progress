@@ -105,6 +105,7 @@ export function printFileSizesAfterBuild(
     if (isLarge && path.extname(asset.name) === ".js") {
       suggestBundleSplitting = true;
     }
+
     console.log(
       "  " +
         (isLarge ? chalk.yellow(sizeLabel) : sizeLabel) +

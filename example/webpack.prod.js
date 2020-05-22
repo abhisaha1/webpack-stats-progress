@@ -2,34 +2,42 @@ const path = require("path");
 
 const buildPath = path.resolve(__dirname, "../dist");
 const FileStats = require("../lib");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
   devtool: "source-map",
   entry: {
-    file1: ["./test/index.js"],
-    file2: ["./test/file2.js"],
-    file3: ["./test/file3.js"],
-    file4: ["./test/file4.js"],
-    file5: ["./test/file5.js"],
-    file6: ["./test/file6.js"],
+    keys: ["./example/index.ts"],
+    chaining: ["./example/chaining.ts"],
+    foreach: ["./example/foreach.ts"],
+    map: ["./example/map.ts"],
+    times: ["./example/times.ts"],
   },
   output: {
-    filename: "[name].[hash:20].js",
+    filename: "[name].js",
     path: buildPath,
   },
   stats: "none",
-  node: {
-    fs: "empty",
-  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(ts|js)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+          experimentalWatchApi: true,
+        },
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
-  plugins: [new FileStats({ env: "production", buildFolder: "../build" })],
+  plugins: [
+    new FileStats({ buildFolder: "../dist" }),
+    new MiniCssExtractPlugin({ filename: "[name].[hash].css" }),
+  ],
 };
