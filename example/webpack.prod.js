@@ -1,8 +1,7 @@
 const path = require("path");
 
 const buildPath = path.resolve(__dirname, "../dist");
-// const FileStats = require("../lib");
-const FileStats = require("webpack-stats-progress");
+const FileStats = require("../lib");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {

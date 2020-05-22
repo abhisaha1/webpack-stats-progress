@@ -1,11 +1,13 @@
+import { Compiler, Stats } from "webpack";
 import {
   measureFileSizesBeforeBuild,
   printFileSizesAfterBuild,
 } from "./reporter";
-import { Compiler, Stats } from "webpack";
+
 import { ISizeMap } from "./types";
-import { progressBarPlugin } from "./progress";
 import { printBuildError } from "./error";
+import { progressBarPlugin } from "./progress";
+
 const chalk = require("chalk");
 
 interface IOptions {
@@ -44,11 +46,13 @@ class BetterWebpackStats {
       process.stdout.clearLine();
       var error = stats.compilation.errors[0];
       if (error) {
-        printBuildError(error.error);
+        printBuildError(error);
       }
       // Measure bundle size only for production build
       if (compiler.options.mode !== "production") return;
-      console.log(chalk.magenta("The sizes displayed below are gzipped"));
+      if (!error) {
+        console.log(chalk.magenta("The sizes displayed below are gzipped"));
+      }
       return printFileSizesAfterBuild(
         stats,
         this.previousSizeMap,

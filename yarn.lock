@@ -4507,10 +4507,10 @@ webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack-stats-progress@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/webpack-stats-progress/-/webpack-stats-progress-0.0.2.tgz#4c88cf245e9f4c41c46b06b38b8f97d75a8b5a43"
-  integrity sha512-KmAOrmtd3ctgya4sZLRyUjjAugrS5sq5N3xUUx5lbyltWv2UN2X4wNtXOJyUAOJrRfoT4I2496WiWB7L7WZjKw==
+webpack-stats-progress@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/webpack-stats-progress/-/webpack-stats-progress-0.0.3.tgz#425cb909f852861e35d152387b96c545ad597887"
+  integrity sha512-dur+nZaoy4F59l+xQeCKGudSi9YbdzN+Pye1oZgsP0xq8G+uqsmjLc3oVfywLs9zlTIygWCCO80sTKI/7pRXFA==
   dependencies:
     filesize "^6.1.0"
     gzip-size "^5.1.1"
