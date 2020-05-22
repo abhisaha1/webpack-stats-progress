@@ -1,11 +1,12 @@
 This plugin is intended to provide cleaner output of webpack build. It also displays a progress bar while the build is running.
 
-<img src="./screenshot.png">
+<img width="400" src="./screenshot.png">
 
 ### Progress bar
 
 The plugin also comes with a progress bar
-<img src="./screenshot2.png">
+
+<img width="400" src="./screenshot2.png">
 
 ### Usage
 
