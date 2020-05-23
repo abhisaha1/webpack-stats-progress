@@ -14,8 +14,10 @@ In th webpack config file, add this plugin and make sure to turn off the stats
 
 ```js
 const WebpackStatsProgress = require("webpack-stats-progress");
+const path = require("path");
 
 module.exports = {
+  // ... other webpack configuration
   mode: "production",
   stats: "none",
   plugins: [
